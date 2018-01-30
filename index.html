@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>广西·柳州柑桔主题品牌产品推介会于1月11日下午13：30在杭州设计创意中心邀您参与！</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="	广西·柳州柑桔主题品牌产品推介会于1月11日下午13：30在杭州设计创意中心邀您参与！">
+    <meta name="description" content="广西·柳州柑桔主题品牌产品推介会于1月11日下午13：30在杭州设计创意中心邀您参与！">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="font/iconfont.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src='scripts/jquery-1.11.3.js'></script>
+    
+</head>
+<body>
+<div class="loading">
+    <img src="images/logo.png" class="logo" alt=""/>
+    <img src="images/loding.jpg" class="loding" alt=""/>
+    <div class="graph">
+        <strong id="bar" style="width:1%;"></strong>
+    </div>
+</div>
+
+<div class="top"><img src="images/w1.png" alt=""/></div>
+<div class="main">
+    <div class="zhuan"><img src="images/fanzhuan.png" alt=""/></div>
+    <div class="content">
+        <div class="word">
+            <img src="images/ww.png" alt=""/>
+        </div>
+        <div class="box"><span></span><img src="images/card.png" class="card" alt=""/></div>
+        <!-- <div class="jt">
+            <p>点击打开信封</p>
+            <b class="iconfont icon-arrow-down"></b>
+        </div> -->
+    </div>
+
+</div>
+<div class="footer">
+    <p>
+        活动时间：2018年1月11日13:30--16:00<br>
+        活动地点：杭州设计创意中心（艮山西路102号2号馆）<br>
+        主办方：柳州市农业局<br>
+        承办方：浙江鲜食会品牌管理有限公司<br>
+        联系人：何先生 <a href="tel:13732230420">13732230420</a> / 沈女士 <a href="tel:0571-86713554">0571-86713554</a><br>
+    </p>
+</div>
+<script>
+    var winWid=window.screen.availWidth>768?768:window.screen.availWidth;
+    document.getElementsByClassName('footer')[0].style.fontSize=winWid/29.54+'px';
+    document.getElementsByClassName('main')[0].style.fontSize=winWid/29.54+'px';
+    $(function(){
+        var height1=document.documentElement.clientHeight;
+        var width1=document.documentElement.clientWidth;
+        function getViewportSize () {
+            return {
+                width1: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+                height1: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+            };
+        }
+        $('.loading .loding').css({'height':height1,'width':width1})
+        $(".loading").css('height',height1);
+    });
+
+    //动画加载js
+    var bar1=document.getElementById('bar');
+    function go(){
+        bar1.style.width = parseInt(bar1.style.width) + 1 + "%";
+        bar1.innerHTML = bar1.style.width;
+        if(bar1.style.width == "100%"){
+            window.clearInterval(bar);
+        }
+    }
+    var bar = window.setInterval("go()",50);
+    window.onload = function(){
+        bar;
+    }
+    setTimeout(function(){
+        $('.loading').fadeOut();
+    },5000)
+</script>
+<script src="scripts/byme.js"></script>
+
+<!--微信分享*2-->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    var url = '';
+    var url2 = '';
+    /*参数access_token*/
+    var url3 = '';
+    /*参数ticket和url*/
+    $.ajax({
+        type: "GET",
+        dataType: 'jsonp',
+        url: url,
+        success: function (msg) {
+            var a_token = msg.access_token;
+            $.ajax({
+                type: "GET",
+                dataType: 'jsonp',
+                url: url2,
+                data: {access_token: a_token},
+                success: function (msg) {
+                    var ticket = msg.ticket;
+                    var url = location.href.split("#")[0];
+                    $.ajax({
+                        type: "GET",
+                        dataType: 'jsonp',
+                        url: url3,
+                        data: {
+                            ticket: ticket,
+                            url: url
+                        },
+                        success: function (msg) {
+                            wx.config({
+                                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                                appId: '', // 必填，公众号的唯一标识
+                                timestamp: msg.timestamp, // 必填，生成签名的时间戳
+                                nonceStr: msg.noncestr, // 必填，生成签名的随机串
+                                signature: msg.signature,// 必填，签名，见附录1
+                                jsApiList: [
+                                    'checkJsApi',
+                                    'onMenuShareTimeline',
+                                    'onMenuShareAppMessage',
+                                    'onMenuShareQQ',
+                                    'onMenuShareWeibo',
+                                    'onMenuShareQZone'
+                                ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                            });
+                        }
+                    })
+                }
+            })
+        }
+    });
+
+
+    wx.ready(function () {
+        var wxData = {
+            title: '广西·柳州柑桔主题品牌产品杭州推介会' || '', // 分享标题
+            desc: '广西·柳州柑桔主题品牌产品推介会于1月11日下午13：30在杭州设计创意中心邀您参与！' || '', // 分享描述
+            link: location.href || '', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '***' || ''// 分享图标
+        };
+        //分享到朋友圈
+        wx.onMenuShareTimeline(wxData);
+        //分享给朋友
+        wx.onMenuShareAppMessage(wxData);
+        //分享到QQ
+        wx.onMenuShareQQ(wxData);
+        //分享到QQ空间
+        wx.onMenuShareQZone(wxData);
+    });
+    //    function is_weixin() {
+    //        var ua = window.navigator.userAgent.toLowerCase();
+    //        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+    //            alert("微信浏览器");
+    //        } else {
+    //            alert("推荐用微信打开，分享给好友哦");
+    ////            var href=location.href;
+    //            //location.href='weixin://connectToFreeWifi/?apKey='+href
+    //        }
+    //    }
+    //   is_weixin();
+
+
+</script>
+
+</body>
+</html>
