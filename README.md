@@ -11,7 +11,7 @@
     
 
 <p align="center">
-    <a href="https://zyzy1.cn/wp">
+    <a href="javascript:;">
         <img width="350" src="https://github.com/326462540/h5_invation/blob/master/images/GIF.gif">
     </a>
 </p>    
