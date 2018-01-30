@@ -12,7 +12,7 @@
 
 <p align="center">
     <a href="https://www.iviewui.com">
-        <img width="200" src="https://github.com/326462540/h5_invation/blob/master/images/GIF.gif">
+        <img width="600" src="https://github.com/326462540/h5_invation/blob/master/images/GIF.gif">
     </a>
 </p>    
 
